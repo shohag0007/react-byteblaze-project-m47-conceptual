@@ -1,5 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import placeholderImage from '../assets/404.jpg';
+import Markdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 
 const Content = () => {
@@ -8,7 +10,7 @@ const Content = () => {
     return (
         <div 
         to={`/blog/${id}`}
-        className=" mx-auto group transition border-2 hover:scale-105 border-primary hover:border-secondary border-opacity-30 hover:no-underline focus:no-underline dark:bg-gray-50">
+        className=" mx-auto group  border-2  border-primary hover:border-secondary border-opacity-30 hover:no-underline focus:no-underline dark:bg-gray-50">
         <img 
         role="presentation" 
         className="object-cover w-full rounded h-44 dark:bg-gray-500" 
@@ -25,7 +27,7 @@ const Content = () => {
             <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">
               {title}
             </h3>
-            {body_html}
+            <Markdown rehypePlagins={[rehypeRaw]}>{body_html}</Markdown>
         </div>
     </div>
     );
